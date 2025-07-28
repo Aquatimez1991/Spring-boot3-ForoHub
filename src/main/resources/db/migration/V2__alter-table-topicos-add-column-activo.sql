@@ -1,4 +1,4 @@
-alter table medicos
+alter table topicos
     add activo tinyint;
-update medicos
+update topicos
 set activo = 1;

@@ -1,7 +1,7 @@
-package med.voll.api.infra.exceptions;
+package foro.hub.api.infra.exceptions;
 
 import jakarta.persistence.EntityNotFoundException;
-import med.voll.api.domain.ValidacionException;
+import foro.hub.api.domain.ValidacionException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;

@@ -1,10 +1,10 @@
-package med.voll.api.controller;
+package foro.hub.api.controller;
 
 import jakarta.validation.Valid;
-import med.voll.api.domain.usuario.DatosAutenticacion;
-import med.voll.api.domain.usuario.Usuario;
-import med.voll.api.infra.security.DatosTokenJWT;
-import med.voll.api.infra.security.TokenService;
+import foro.hub.api.domain.usuario.DatosAutenticacion;
+import foro.hub.api.domain.usuario.Usuario;
+import foro.hub.api.infra.security.DatosTokenJWT;
+import foro.hub.api.infra.security.TokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;

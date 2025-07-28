@@ -1,4 +1,4 @@
-package med.voll.api.infra.security;
+package foro.hub.api.infra.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

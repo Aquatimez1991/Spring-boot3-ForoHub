@@ -1,4 +1,4 @@
-package med.voll.api.infra.springdoc;
+package foro.hub.api.infra.springdoc;
 
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
@@ -23,13 +23,13 @@ public class SpringDocConfiguration {
                                         .bearerFormat("JWT"))
                 )
                 .info(new Info()
-                        .title("Voll.med API")
-                        .description("API Rest de la aplicación Voll.med, que contiene las funcionalidades CRUD de médicos y de pacientes, además de reserva y cancelamiento de consultas")
+                        .title("Forohub API")
+                        .description("API Rest de la aplicación Foro Hub, que contiene las funcionalidades CRUD de usuarios, topicos y respuestas")
                         .contact(new Contact()
                                 .name("Equipo Backend")
-                                .email("backend@voll.med"))
+                                .email("backend@forohub"))
                         .license(new License()
                                 .name("Apache 2.0")
-                                .url("http://voll.med/api/licencia")));
+                                .url("http://forohub.api/licencia")));
     }
 }

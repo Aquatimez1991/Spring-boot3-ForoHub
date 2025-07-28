@@ -1,4 +1,4 @@
-package med.voll.api;
+package foro.hub.api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
