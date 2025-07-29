@@ -1,5 +1,6 @@
 package foro.hub.api.infra.exceptions;
 
+import foro.hub.api.domain.AccesoModificarDenegadoException;
 import jakarta.persistence.EntityNotFoundException;
 import foro.hub.api.domain.ValidacionException;
 import org.springframework.http.HttpStatus;
@@ -49,18 +50,22 @@ public class GestorDeErrores {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity gestionarError500(Exception ex) {
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error: " +ex.getLocalizedMessage());
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error: " + ex.getLocalizedMessage());
     }
-
 
     @ExceptionHandler(ValidacionException.class)
     public ResponseEntity tratarErrorDeValidacion(ValidacionException e) {
-        return ResponseEntity.badRequest().body(e.getMessage());
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
     }
 
     public record DatosErrorValidacion(String campo, String mensaje) {
-        public DatosErrorValidacion(FieldError error){
+        public DatosErrorValidacion(FieldError error) {
             this(error.getField(), error.getDefaultMessage());
         }
+    }
+
+    @ExceptionHandler(AccesoModificarDenegadoException.class)
+    public ResponseEntity gestionarErrorMoficacion(AccesoModificarDenegadoException e) {
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.getMessage());
     }
 }

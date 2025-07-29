@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 
 public record DatosActualizacionTopico(
         @NotNull Long id,
-        String idUsuario,
+        String usuario,
         String mensaje,
         NombreCurso nombreCurso,
         String titulo,

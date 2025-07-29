@@ -59,4 +59,24 @@ public class Usuario implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+    @Column(nullable = false)
+    private Boolean activo;
+
+    public Usuario(DatosRegistroUsuario datos) {
+        this.login = datos.login();
+        this.contrasena = datos.contrasena();
+        this.activo = true;
+    }
+
+    public void actualizarInformacion(DatosActualizarUsuario datos) {
+        if (datos.login() != null) this.login = datos.login();
+        if (datos.contrasena() != null) this.contrasena = datos.contrasena();
+    }
+
+    public void eliminar() {
+        this.activo = false;
+    }
+
+
 }

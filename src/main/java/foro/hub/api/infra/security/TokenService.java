@@ -28,10 +28,10 @@ public class TokenService {
                     .withSubject(usuario.getLogin())
                     .withExpiresAt(fechaExpiracion())
                     .sign(algoritmo);
-    } catch (JWTCreationException exception) {
+        } catch (JWTCreationException exception) {
             throw new RuntimeException("Error al generar el token JWT", exception);
         }
-}
+    }
 
     private Instant fechaExpiracion() {
         return LocalDateTime.now()
@@ -43,7 +43,7 @@ public class TokenService {
         try {
             var algoritmo = Algorithm.HMAC256(secret);
             return JWT.require(algoritmo)
-                    .withIssuer("API Forohub")
+                    .withIssuer("API ForoHub")
                     .build()
                     .verify(tokenJWT)
                     .getSubject();

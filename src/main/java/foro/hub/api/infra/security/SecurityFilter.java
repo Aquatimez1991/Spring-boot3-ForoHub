@@ -29,7 +29,7 @@ public class SecurityFilter extends OncePerRequestFilter {
             FilterChain filterChain) throws ServletException, IOException {
 
         var tokenJWT = recuperarToken(request);
-        if(tokenJWT != null) {
+        if (tokenJWT != null) {
 
             var subject = tokenService.getSubject(tokenJWT);
             var usuario = repository.findByLogin(subject);
