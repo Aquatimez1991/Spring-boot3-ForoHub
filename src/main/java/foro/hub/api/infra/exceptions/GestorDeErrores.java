@@ -1,6 +1,8 @@
 package foro.hub.api.infra.exceptions;
 
-import foro.hub.api.domain.AccesoModificarDenegadoException;
+import foro.hub.api.domain.ModificarException;
+import foro.hub.api.domain.InactivoException;
+import foro.hub.api.domain.ValidacionIntegridad;
 import jakarta.persistence.EntityNotFoundException;
 import foro.hub.api.domain.ValidacionException;
 import org.springframework.http.HttpStatus;
@@ -9,6 +11,7 @@ import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -40,7 +43,7 @@ public class GestorDeErrores {
 
     @ExceptionHandler(AuthenticationException.class)
     public ResponseEntity gestionarErrorAuthentication() {
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Falla en la autenticación");
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Usuario inactivo o credenciales inválidas");
     }
 
     @ExceptionHandler(AccessDeniedException.class)
@@ -64,8 +67,29 @@ public class GestorDeErrores {
         }
     }
 
-    @ExceptionHandler(AccesoModificarDenegadoException.class)
-    public ResponseEntity gestionarErrorMoficacion(AccesoModificarDenegadoException e) {
+    @ExceptionHandler(ModificarException.class)
+    public ResponseEntity gestionarErrorMoficacion(ModificarException e) {
         return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.getMessage());
+    }
+
+    @ExceptionHandler(ValidacionIntegridad.class)
+    public ResponseEntity<String> manejarErrorIntegridad(ValidacionIntegridad ex) {
+        return ResponseEntity.badRequest().body(ex.getMessage());
+
+    }
+    @ExceptionHandler(UsernameNotFoundException.class)
+    public ResponseEntity<DatosError> manejarUsuarioNoEncontrado(UsernameNotFoundException ex) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body(new DatosError("Usuario no encontrado", "El usuario ingresado no existe."));
+    }
+
+    @ExceptionHandler(InactivoException.class)
+    public ResponseEntity<DatosError> manejarUsuarioDeshabilitado(InactivoException ex) {
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                .body(new DatosError("Usuario inactivo", "Tu cuenta está desactivada."));
+    }
+
+
+    public record DatosError(String error, String mensaje) {
     }
 }

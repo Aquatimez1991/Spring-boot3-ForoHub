@@ -1,0 +1,551 @@
+type: collection.insomnia.rest/5.0
+name: apivoll.med
+meta:
+  id: wrk_4c3929fd51524dd78b6612481250096e
+  created: 1751384021449
+  modified: 1751384046954
+  description: ""
+collection:
+  - name: Voll Med
+    meta:
+      id: fld_5781a1942537479d8cf9856d7eb1423d
+      created: 1753238803126
+      modified: 1753718740959
+      sortKey: -1753238803326
+      description: ""
+    children:
+      - name: Paciente
+        meta:
+          id: fld_792d0e5d7c5e4edb81f30647ac726950
+          created: 1752509972299
+          modified: 1753238826675
+          sortKey: -1753238807330
+          description: ""
+      - name: Medico
+        meta:
+          id: fld_c11182932bfd4684b0b466328d010b3a
+          created: 1752513145644
+          modified: 1753238812771
+          sortKey: -1753238807230
+          description: ""
+      - name: Consulta
+        meta:
+          id: fld_041e26099983432c959037efed5873e6
+          created: 1753238453179
+          modified: 1753238831792
+          sortKey: -1753238807430
+          description: ""
+  - name: FotoHub_api
+    meta:
+      id: fld_a9dbf795498f42c097503181ae75ebea
+      created: 1753373563745
+      modified: 1753387620192
+      sortKey: -1753373563745
+      description: ""
+    children:
+      - name: Usuarios
+        meta:
+          id: fld_82a5b3be905a4bd9b164ccc5d9d96157
+          created: 1753735608489
+          modified: 1753809523361
+          sortKey: -1753735608489
+          description: ""
+        children:
+          - url: http://localhost:8080/usuarios
+            name: Registrar Usuarios
+            meta:
+              id: req_22436a975ff5463a9b54729b3f3099f5
+              created: 1753735667516
+              modified: 1753827071513
+              isPrivate: false
+              description: ""
+              sortKey: -1753809584483
+            method: POST
+            body:
+              mimeType: application/json
+              text: |
+                {
+                  "login": "otrousuario@foro.hub",
+                  "contrasena": "1234"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/11.3.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8080/usuarios/5
+            name: Eliminar Usuario
+            meta:
+              id: req_446516c7f55d4b58967847755a186f3a
+              created: 1753809573307
+              modified: 1753820593010
+              isPrivate: false
+              description: ""
+              sortKey: -1753809573307
+            method: DELETE
+            headers:
+              - name: User-Agent
+                value: insomnia/11.3.0
+            authentication:
+              type: bearer
+              token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJBUEkgRm9yb0h1YiIsInN1YiI6InBlNnJlLnBlcmV6QGZvcm8uaHViIiwiZXhwIjoxNzUzOTA2OTQzfQ.edIZlInCZMxFWbcWm73JdS59LovbzPkOp9NAaRiXKFA
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8080/usuarios
+            name: Actualizar Usuario
+            meta:
+              id: req_f7cfe14a0e1f485a8ac88e00cac90da8
+              created: 1753809580519
+              modified: 1753809724498
+              isPrivate: false
+              description: ""
+              sortKey: -1753809580519
+            method: PUT
+            headers:
+              - name: User-Agent
+                value: insomnia/11.3.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8080/usuarios/3
+            name: Detallar Usuario
+            meta:
+              id: req_6bcf79758b2b4a7ca05991dc3628101f
+              created: 1753809582375
+              modified: 1753810054416
+              isPrivate: false
+              description: ""
+              sortKey: -1753809582375
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/11.3.0
+            authentication:
+              type: bearer
+              token: "{{ _.tokenforo }}"
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8080/usuarios
+            name: Lista Usuarios
+            meta:
+              id: req_b494aa7712b34b628d97158a9ce13d5d
+              created: 1753809584383
+              modified: 1753820643116
+              isPrivate: false
+              description: ""
+              sortKey: -1753809584383
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/11.3.0
+            authentication:
+              type: bearer
+              token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJBUEkgRm9yb0h1YiIsInN1YiI6InBlNnJlLnBlcmV6QGZvcm8uaHViIiwiZXhwIjoxNzUzOTA2OTQzfQ.edIZlInCZMxFWbcWm73JdS59LovbzPkOp9NAaRiXKFA
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+      - name: Topicos
+        meta:
+          id: fld_8e1829b4d53245dea291475d1a271bd2
+          created: 1753735624112
+          modified: 1753809548014
+          sortKey: -1753735624112
+          description: ""
+        children:
+          - url: http://localhost:8080/topico
+            name: Registrar Topico
+            meta:
+              id: req_ef507e4f2f25491e91de07765df3724d
+              created: 1753373570363
+              modified: 1753827194334
+              isPrivate: false
+              description: ""
+              sortKey: -1753735634072
+            method: POST
+            body:
+              mimeType: application/json
+              text: |+
+                {
+                	"mensaje":"pruebas",
+                	"nombreCurso":"java",
+                	"titulo": "problemas ayuda!!!"
+                }
+
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/11.3.0
+            authentication:
+              type: bearer
+              token: "{{ _.nuevousuario }}"
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8080/topico
+            name: Lista Topicos
+            meta:
+              id: req_0d8ffa9166dd40ada0d2200027da5cea
+              created: 1753387627632
+              modified: 1753825098824
+              isPrivate: false
+              description: ""
+              sortKey: -1753735633772
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/11.3.0
+            authentication:
+              type: bearer
+              token: "{{ _.bearer }}"
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8080/topico/4
+            name: Detallar Topico
+            meta:
+              id: req_399c059912e1489393a0a8a48dc13cc4
+              created: 1753388588759
+              modified: 1753823804302
+              isPrivate: false
+              description: ""
+              sortKey: -1753735633672
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/11.3.0
+            authentication:
+              type: bearer
+              token: "{{ _.ultimotoken }}"
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8080/topico
+            name: Actualiza Topico
+            meta:
+              id: req_2c884017aeb241f7bcdbd2983b41cf6e
+              created: 1753389322696
+              modified: 1753825165486
+              isPrivate: false
+              description: ""
+              sortKey: -1753735633622
+            method: PUT
+            body:
+              mimeType: application/json
+              text: |-
+                {
+                	"id": 2,
+                	"mensaje": "virus8",
+                	"nombreCurso": "phyton",
+                	"titulo": "virus8"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/11.3.0
+            authentication:
+              type: bearer
+              token: "{{ _.bearer }}"
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8080/topico/5
+            name: Eliminar Topico
+            meta:
+              id: req_b9795ca55f1f4ed884bd1dc035599de7
+              created: 1753389880534
+              modified: 1753820566797
+              isPrivate: false
+              description: ""
+              sortKey: -1753735633572
+            method: DELETE
+            headers:
+              - name: User-Agent
+                value: insomnia/11.3.0
+            authentication:
+              type: bearer
+              token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJBUEkgRm9yb0h1YiIsInN1YiI6InBlNnJlLnBlcmV6QGZvcm8uaHViIiwiZXhwIjoxNzUzOTA2OTQzfQ.edIZlInCZMxFWbcWm73JdS59LovbzPkOp9NAaRiXKFA
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+      - name: Respuestas
+        meta:
+          id: fld_7a351838e24d4bc2975a463213a87637
+          created: 1753809538433
+          modified: 1753809545432
+          sortKey: -1753809538483
+          description: ""
+        children:
+          - url: http://localhost:8080/respuesta/5
+            name: Eliminar Respuesta
+            meta:
+              id: req_ed44ba4aa1df46329e2c80a029f625c1
+              created: 1753825685390
+              modified: 1753827889697
+              isPrivate: false
+              description: ""
+              sortKey: -1753825685390
+            method: DELETE
+            headers:
+              - name: User-Agent
+                value: insomnia/11.3.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8080/respuesta
+            name: Actualizar Respuesta
+            meta:
+              id: req_df8f96ee5e9c4983a0568289c0c38294
+              created: 1753825687935
+              modified: 1753827868078
+              isPrivate: false
+              description: ""
+              sortKey: -1753825687935
+            method: PUT
+            body:
+              mimeType: application/json
+              text: |
+                {
+                  "id": 2,
+                  "mensaje": "Mensaje actualizado de la respuesta."
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/11.3.0
+            authentication:
+              type: bearer
+              token: "{{ _.bearer }}"
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8080/respuesta/4
+            name: Detallar Respuesta
+            meta:
+              id: req_1a1a84bcb3564821a398b23390e3dffa
+              created: 1753825692291
+              modified: 1753825789440
+              isPrivate: false
+              description: ""
+              sortKey: -1753825692291
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/11.3.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8080/respuesta
+            name: Listar Respuestas
+            meta:
+              id: req_ce4667e8e6a94135ba625b31260074e8
+              created: 1753825694142
+              modified: 1753827916964
+              isPrivate: false
+              description: ""
+              sortKey: -1753825694142
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/11.3.0
+            authentication:
+              type: bearer
+              token: "{{ _.bearer }}"
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:8080/respuesta
+            name: Registrar Respuesta
+            meta:
+              id: req_e36332a7de3545bf9948814b322d80f8
+              created: 1753825695873
+              modified: 1753827628883
+              isPrivate: false
+              description: ""
+              sortKey: -1753825695873
+            method: POST
+            body:
+              mimeType: application/json
+              text: |
+                {
+                  "idTopico": 4,
+                  "mensaje": "Esta es una respuesta al tópico."
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/11.3.0
+            authentication:
+              type: bearer
+              token: "{{ _.bearer }}"
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+      - url: http://localhost:8080/login
+        name: Iniciar Sesion
+        meta:
+          id: req_24bbe04ef6b846b6b3c774545423bd9d
+          created: 1753384867543
+          modified: 1753827101339
+          isPrivate: false
+          description: |
+            {
+            	"login": "miusuario.apellido@foro.hub",
+            	"contrasena": "123456"
+            }
+
+
+
+            {
+            	"login": "juan.perez@foro.hub",
+            	"contrasena": "123456"
+            }
+
+
+            {
+              "login": "percy.perez@foro.hub",
+              "contrasena": "123459"
+            }
+
+
+            {
+              "login": "pere.perez@foro.hub",
+              "contrasena": "123459"
+            }
+
+            {
+              "login": "pe6re.perez@foro.hub",
+              "contrasena": "123459"
+            }
+          sortKey: -1753809538533
+        method: POST
+        body:
+          mimeType: application/json
+          text: |
+            {
+              "login": "otrousuario@foro.hub",
+              "contrasena": "1234"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.3.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_a8130bd764b8675b0d4307840f39415d509c48e7
+    created: 1751384021454
+    modified: 1752598894638
+  cookies:
+    - key: JSESSIONID
+      value: AB9BDCB20A077B6E7EF7D09504400F96
+      domain: localhost
+      path: /
+      httpOnly: true
+      hostOnly: true
+      creation: 2025-07-15T16:58:24.644Z
+      lastAccessed: 2025-07-15T17:01:34.637Z
+      id: 0ade85f2-cc40-478d-8e72-0c1c39821264
+environments:
+  name: Base Environment
+  meta:
+    id: env_a8130bd764b8675b0d4307840f39415d509c48e7
+    created: 1751384021452
+    modified: 1753827138383
+    isPrivate: false
+  data:
+    bearer: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJBUEkgRm9yb0h1YiIsInN1YiI6Im1pdXN1YXJpby5hcGVsbGlkb0Bmb3JvLmh1YiIsImV4cCI6MTc1MzkwNjg4OH0.n4v2JcWL3LwML6DWCNx-Ro7jq06q5vycpDwDVyuNQlc
+    tokenforo: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJBUEkgRm9yb0h1YiIsInN1YiI6Imp1YW4ucGVyZXpAZm9yby5odWIiLCJleHAiOjE3NTM5MTI4ODd9.GAD_nCaFcAFSSyWMA_n3tMhdt1cvDZ9OmggdDyczM1w
+    nuevousuario: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJBUEkgRm9yb0h1YiIsInN1YiI6Im90cm91c3VhcmlvQGZvcm8uaHViIiwiZXhwIjoxNzUzOTEzNTAyfQ.UJBrtGNIX-8z5AraM4FLJsek7ewp7nMrYmnvG0gjgVs

@@ -6,6 +6,7 @@ import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.exceptions.TokenExpiredException;
 import foro.hub.api.domain.usuario.Usuario;
+import foro.hub.api.domain.usuario.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +20,12 @@ public class TokenService {
     private String secret;
 
     private static final int HORAS_EXPIRACION = 24;
+
+    private final UsuarioRepository usuarioRepository;
+
+    public TokenService(UsuarioRepository usuarioRepository) {
+        this.usuarioRepository = usuarioRepository;
+    }
 
     public String generarToken(Usuario usuario) {
         try {
@@ -53,4 +60,15 @@ public class TokenService {
             throw new RuntimeException("Token JWT inválido", exception);
         }
     }
+
+    public String getSubjectIfUsuarioActivo(String tokenJWT) {
+        String login = getSubject(tokenJWT);
+
+        var usuario = usuarioRepository.findByLoginAndActivoTrue(login)
+                .orElseThrow(() -> new RuntimeException("El usuario ya no está activo. Inicie sesión nuevamente."));
+
+        return usuario.getLogin();
+    }
+
+
 }

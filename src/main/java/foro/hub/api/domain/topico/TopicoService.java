@@ -1,6 +1,6 @@
 package foro.hub.api.domain.topico;
 
-import foro.hub.api.domain.AccesoModificarDenegadoException;
+import foro.hub.api.domain.ModificarException;
 import foro.hub.api.domain.ValidacionException;
 import foro.hub.api.domain.usuario.Usuario;
 import foro.hub.api.domain.usuario.UsuarioRepository;
@@ -23,8 +23,8 @@ public class TopicoService {
             throw new ValidacionException("Ya existe un tópico con ese título y mensaje.");
         }
         String login = SecurityContextHolder.getContext().getAuthentication().getName();
-        Usuario usuario = (Usuario) usuarioRepository.findByLogin(login);
-
+        Usuario usuario = usuarioRepository.findByLoginAndActivoTrue(login)
+                .orElseThrow(() -> new ValidacionException("Usuario no encontrado o inactivo"));
         Topico topico = new Topico(datos, usuario);
         return topicoRepository.save(topico);
     }
@@ -45,7 +45,7 @@ public class TopicoService {
     private void validarPropietario(Topico topico) {
         String login = SecurityContextHolder.getContext().getAuthentication().getName();
         if (!topico.getUsuario().getUsername().equals(login)) {
-            throw new AccesoModificarDenegadoException("No tienes permiso para modificar este tópico");
+            throw new ModificarException("No tienes permiso para modificar este tópico");
         }
     }
 }

@@ -22,10 +22,10 @@ public class SecurityConfigurations {
     private SecurityFilter securityFilter;
 
     @Autowired
-    private CustomAccessDeniedHandler accessDeniedHandler;
+    private ManejoDeAccesoDenegado accessDeniedHandler;
 
     @Autowired
-    private CustomAuthenticationEntryPoint authenticationEntryPoint;
+    private EntradaDeAutenticacion authenticationEntryPoint;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {

@@ -12,8 +12,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.List;
 
-@Table(name = "usuarios")
 @Entity(name = "Usuario")
+@Table(name = "usuarios")
+
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
@@ -57,11 +58,12 @@ public class Usuario implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return this.activo;
     }
 
     @Column(nullable = false)
     private Boolean activo;
+
 
     public Usuario(DatosRegistroUsuario datos) {
         this.login = datos.login();
