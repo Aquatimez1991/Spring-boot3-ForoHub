@@ -434,15 +434,18 @@ nuevousuario: "token_nuevo_usuario"
 
 ## 📄 Licencia
 
-Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE.md](LICENSE.md) para detalles.
+Este proyecto está bajo la Licencia MIT 
 
 ---
 
 ## 👨‍💻 Autor
 
-**Tu Nombre**
+**Elías Jeshua Salgado Coripuna**
 - GitHub: [@Aquatimez1991](https://github.com/Aquatimez1991)
-- LinkedIn: [Tu perfil]()
+
+- 📍 Perú / Chile
+- 🛠️ Soporte técnico | Programador Java | Desarrollador Angular
+- 📧 esalgadoc@outlook.com
 
 ---
 
