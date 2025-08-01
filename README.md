@@ -29,7 +29,7 @@
 - [Testing con Insomnia](#testing-con-insomnia)
 - [Casos de Uso](#casos-de-uso)
 - [Contribución](#contribución)
-
+- [Angular Front ForoHub](#angular-front-foroHub)
 ---
 
 ## 📖 Descripción
@@ -429,6 +429,19 @@ nuevousuario: "token_nuevo_usuario"
 3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
 4. Push a la rama (`git push origin feature/AmazingFeature`)
 5. Abre un Pull Request
+
+---
+
+---
+
+## 🧩 Angular Front ForoHub
+
+Este repositorio contiene únicamente el frontend del proyecto **ForoHub**, desarrollado en Angular.  
+El frontend está disponible en el siguiente repositorio:
+
+- [🔗 ForoHub-Front-end](https://github.com/Aquatimez1991/Angular-Front-ForoHub.git)
+
+> Asegúrate de clonar y configurar ambos proyectos para un entorno de desarrollo completo.
 
 ---
 
