@@ -1,7 +1,12 @@
 package foro.hub.api.domain.usuario;
 
-public record DatosListaUsuario(Long id, String login) {
+public record DatosListaUsuario(
+        Long id,
+        String login) {
     public DatosListaUsuario(Usuario usuario) {
-        this(usuario.getId(), usuario.getLogin());
+        this(
+        usuario.getId(),
+        usuario.getLogin()
+        );
     }
 }

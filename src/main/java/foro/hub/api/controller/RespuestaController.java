@@ -14,6 +14,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/respuesta")
 public class RespuestaController {
@@ -51,11 +53,21 @@ public class RespuestaController {
         return ResponseEntity.ok(new DatosDetalleRespuesta(respuesta));
     }
 
-
     @DeleteMapping("/{id}")
     @Transactional
     public ResponseEntity eliminar(@PathVariable Long id) {
         respuestaService.eliminarRespuesta(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/topico/{idTopico}")
+    public ResponseEntity<List<DatosListaRespuesta>> obtenerRespuestasPorTopico(@PathVariable Long idTopico) {
+        var respuestas = respuestaRepository
+                .findByTopicoIdAndActivoTrue(idTopico)
+                .stream()
+                .map(DatosListaRespuesta::new)
+                .toList();
+
+        return ResponseEntity.ok(respuestas);
     }
 }

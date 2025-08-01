@@ -1,5 +1,6 @@
 package foro.hub.api.controller;
 
+import foro.hub.api.domain.respuesta.DatosListaRespuesta;
 import foro.hub.api.domain.topico.*;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/topico")
@@ -30,7 +33,7 @@ public class TopicoController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<DatosListaTopico>> listar(@PageableDefault(size = 10, sort = {"id"}) Pageable paginacion) {
+    public ResponseEntity<Page<DatosListaTopico>> listar(@PageableDefault(size = 100, sort = {"id"}) Pageable paginacion) {
         var page = repository.findAllByActivoTrue(paginacion).map(DatosListaTopico::new);
         return ResponseEntity.ok(page);
     }
@@ -53,5 +56,14 @@ public class TopicoController {
     public ResponseEntity eliminar(@PathVariable Long id) {
         topicoService.eliminarTopico(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/usuario/{idUsuario}")
+    public ResponseEntity<List<DatosListaTopico>> obtenerTopicosPorUsuario(@PathVariable Long idUsuario) {
+        List<Topico> topicos = repository.findByUsuarioIdAndActivoTrue(idUsuario);
+        List<DatosListaTopico> resultado = topicos.stream()
+                .map(DatosListaTopico::new)
+                .toList();
+        return ResponseEntity.ok(resultado);
     }
 }
