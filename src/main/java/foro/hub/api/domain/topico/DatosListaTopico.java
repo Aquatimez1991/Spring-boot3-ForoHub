@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 public record DatosListaTopico(
         Long id,
         String usuario,
+        Long idUsuario,
         String mensaje,
         NombreCurso nombreCurso,
         String titulo,
@@ -14,6 +15,7 @@ public record DatosListaTopico(
         this(
                 topico.getId(),
                 topico.getUsuario().getLogin(),
+                topico.getUsuario().getId(),
                 topico.getMensaje(),
                 topico.getNombreCurso(),
                 topico.getTitulo(),
