@@ -27,7 +27,7 @@ public class SecurityFilter extends OncePerRequestFilter {
                                     HttpServletResponse response,
                                     FilterChain filterChain) throws ServletException, IOException {
 
-        // ❌ Ya no manejamos manualmente el OPTIONS. Spring se encargará.
+
         var tokenJWT = recuperarToken(request);
 
         if (tokenJWT != null) {

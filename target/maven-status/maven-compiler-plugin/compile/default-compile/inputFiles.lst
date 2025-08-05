@@ -33,7 +33,6 @@ C:\Users\Esalg\OneDrive\Escritorio\PROYECTOS\Spring-boot3-ForoHub\src\main\java\
 C:\Users\Esalg\OneDrive\Escritorio\PROYECTOS\Spring-boot3-ForoHub\src\main\java\foro\hub\api\domain\ValidacionException.java
 C:\Users\Esalg\OneDrive\Escritorio\PROYECTOS\Spring-boot3-ForoHub\src\main\java\foro\hub\api\domain\ValidacionIntegridad.java
 C:\Users\Esalg\OneDrive\Escritorio\PROYECTOS\Spring-boot3-ForoHub\src\main\java\foro\hub\api\infra\exceptions\GestorDeErrores.java
-C:\Users\Esalg\OneDrive\Escritorio\PROYECTOS\Spring-boot3-ForoHub\src\main\java\foro\hub\api\infra\security\CorsConfig.java
 C:\Users\Esalg\OneDrive\Escritorio\PROYECTOS\Spring-boot3-ForoHub\src\main\java\foro\hub\api\infra\security\CustomAccessDeniedHandler.java
 C:\Users\Esalg\OneDrive\Escritorio\PROYECTOS\Spring-boot3-ForoHub\src\main\java\foro\hub\api\infra\security\CustomAuthenticationEntryPoint.java
 C:\Users\Esalg\OneDrive\Escritorio\PROYECTOS\Spring-boot3-ForoHub\src\main\java\foro\hub\api\infra\security\DatosTokenJWT.java
