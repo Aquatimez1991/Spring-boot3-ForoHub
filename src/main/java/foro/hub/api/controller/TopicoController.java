@@ -40,8 +40,8 @@ public class TopicoController {
 
     @GetMapping("/{id}")
     public ResponseEntity detallar(@PathVariable Long id) {
-        var topico = repository.getReferenceById(id);
-        return ResponseEntity.ok(new DatosDetalleTopico(topico));
+        var topico = topicoService.obtenerDetalleTopico(id);
+        return ResponseEntity.ok(topico);
     }
 
     @Transactional

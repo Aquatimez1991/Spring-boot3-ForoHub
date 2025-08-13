@@ -26,7 +26,7 @@ public class UsuarioController {
     }
 
     @GetMapping
-    public ResponseEntity listar(@PageableDefault(size = 10, sort = {"id"}) Pageable paginacion) {
+    public ResponseEntity listar(@PageableDefault(size = 20, sort = {"id"}) Pageable paginacion) {
         var page = usuarioService.listar(paginacion);
         return ResponseEntity.ok(page);
     }

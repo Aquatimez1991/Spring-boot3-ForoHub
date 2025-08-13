@@ -49,8 +49,8 @@ public class RespuestaController {
 
     @GetMapping("/{id}")
     public ResponseEntity detallar(@PathVariable Long id) {
-        var respuesta = respuestaRepository.getReferenceById(id);
-        return ResponseEntity.ok(new DatosDetalleRespuesta(respuesta));
+        var respuesta = respuestaService.obtenerDetalleRespuesta(id);
+        return ResponseEntity.ok(respuesta);
     }
 
     @DeleteMapping("/{id}")

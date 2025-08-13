@@ -1,10 +1,7 @@
 package foro.hub.api.infra.exceptions;
 
-import foro.hub.api.domain.ModificarException;
-import foro.hub.api.domain.InactivoException;
-import foro.hub.api.domain.ValidacionIntegridad;
+import foro.hub.api.domain.*;
 import jakarta.persistence.EntityNotFoundException;
-import foro.hub.api.domain.ValidacionException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -88,8 +85,18 @@ public class GestorDeErrores {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
                 .body(new DatosError("Usuario inactivo", "Tu cuenta está desactivada."));
     }
-
-
     public record DatosError(String error, String mensaje) {
+    }
+
+    @ExceptionHandler(InactivoTopicoException.class)
+    public ResponseEntity<DatosError> manejarTopicoInactivo(InactivoTopicoException ex) {
+        return ResponseEntity.status(HttpStatus.FORBIDDEN)
+                .body(new DatosError("Tópico inactivo", ex.getMessage()));
+    }
+
+    @ExceptionHandler(InactivoRespuestaException.class)
+    public ResponseEntity<DatosError> manejarRespuestaInactivo(InactivoRespuestaException ex) {
+        return ResponseEntity.status(HttpStatus.FORBIDDEN)
+                .body(new DatosError("Respuesta inactivo", ex.getMessage()));
     }
 }

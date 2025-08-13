@@ -1,9 +1,11 @@
 package foro.hub.api.domain.topico;
 
+import foro.hub.api.domain.InactivoTopicoException;
 import foro.hub.api.domain.ModificarException;
 import foro.hub.api.domain.ValidacionException;
 import foro.hub.api.domain.usuario.Usuario;
 import foro.hub.api.domain.usuario.UsuarioRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +29,15 @@ public class TopicoService {
                 .orElseThrow(() -> new ValidacionException("Usuario no encontrado o inactivo"));
         Topico topico = new Topico(datos, usuario);
         return topicoRepository.save(topico);
+    }
+
+    public DatosDetalleTopico obtenerDetalleTopico(Long id) {
+        Topico topico = topicoRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("El tópico no existe"));
+        if (!topico.getActivo()) {
+            throw new InactivoTopicoException("El tópico no está disponible porque está inactivo.");
+        }
+        return new DatosDetalleTopico(topico);
     }
 
     public Topico actualizarTopico(DatosActualizacionTopico datos) {
