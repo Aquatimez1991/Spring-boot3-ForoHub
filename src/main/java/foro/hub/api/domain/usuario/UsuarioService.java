@@ -31,7 +31,12 @@ public class UsuarioService {
     public Usuario actualizar(DatosActualizarUsuario datos) {
         var usuario = repository.getReferenceById(datos.id());
         validarAcceso(usuario);
-        usuario.actualizarInformacion(datos);
+
+        String contrasenaEncriptada = datos.contrasena() != null && !datos.contrasena().isBlank()
+                ? passwordEncoder.encode(datos.contrasena())
+                : null;
+
+        usuario.actualizarInformacion(datos, contrasenaEncriptada);
         return usuario;
     }
 

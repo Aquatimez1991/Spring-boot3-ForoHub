@@ -71,9 +71,9 @@ public class Usuario implements UserDetails {
         this.activo = true;
     }
 
-    public void actualizarInformacion(DatosActualizarUsuario datos) {
+    public void actualizarInformacion(DatosActualizarUsuario datos, String contrasenaEncriptada) {
         if (datos.login() != null) this.login = datos.login();
-        if (datos.contrasena() != null) this.contrasena = datos.contrasena();
+        if (contrasenaEncriptada != null) this.contrasena = contrasenaEncriptada;
     }
 
     public void eliminar() {

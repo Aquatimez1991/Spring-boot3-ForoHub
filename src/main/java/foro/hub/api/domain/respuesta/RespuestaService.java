@@ -1,11 +1,15 @@
 package foro.hub.api.domain.respuesta;
 
+import foro.hub.api.domain.InactivoRespuestaException;
+import foro.hub.api.domain.InactivoTopicoException;
 import foro.hub.api.domain.ValidacionIntegridad;
+import foro.hub.api.domain.topico.DatosDetalleTopico;
 import foro.hub.api.domain.topico.Topico;
 import foro.hub.api.domain.topico.TopicoRepository;
 import foro.hub.api.domain.usuario.Usuario;
 import foro.hub.api.domain.usuario.UsuarioRepository;
 import foro.hub.api.domain.ValidacionException;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
@@ -36,6 +40,15 @@ public class RespuestaService {
 
         Respuesta respuesta = new Respuesta(datos, usuario, topico);
         return respuestaRepository.save(respuesta);
+    }
+
+    public DatosDetalleRespuesta obtenerDetalleRespuesta(Long id) {
+        Respuesta respuesta = respuestaRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("La respuesta no existe"));
+        if (!respuesta.getActivo()) {
+            throw new InactivoRespuestaException("La respuesta no está disponible porque está inactivo.");
+        }
+        return new DatosDetalleRespuesta(respuesta);
     }
 
     public Respuesta actualizarRespuesta(DatosActualizarRespuesta datos) {
